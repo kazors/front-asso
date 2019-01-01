@@ -11,10 +11,12 @@ import { TwoComponent } from './two/two.component';
 import { ThreeComponent } from './three/three.component';
 import { FooterComponent } from './footer/footer.component';
 import { FragmentPolyfillModule } from "../fragment-polyfill.module";
+import { PageComponent } from './page/page.component';
 
 const appRoutes: Routes= [
   {
-  path: "app",
+  
+  path: "" ,component:PageComponent,
   children: [
     {
       path:"sidebar",
@@ -43,10 +45,13 @@ const appRoutes: Routes= [
     {
       path:"footer",
       component:FooterComponent
-    }
-  ]
+    },
+    
+  ],
+  
 }
 ]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +61,8 @@ const appRoutes: Routes= [
     OneComponent,
     TwoComponent,
     ThreeComponent,
-    FooterComponent
+    FooterComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,7 @@ const appRoutes: Routes= [
     FragmentPolyfillModule.forRoot({
       smooth: true
   }),
+  RouterModule.forRoot(appRoutes,{useHash:true})
   ],
   providers: [],
   bootstrap: [AppComponent]
